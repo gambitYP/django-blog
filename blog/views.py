@@ -1,8 +1,14 @@
-from django.shortcuts import render
-from django.utils import timezone
+from django.views.generic import ListView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post
 
-# Create your views here.
-def index(request):
-	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-	return render(request, 'blog/index.html', {'posts': posts})
+
+class PostListView(ListView):
+	template_name = 'blog/index.html'
+	context_object_name = 'posts'
+	paginate_by = 1
+
+	def get_queryset(self):
+		return Post.objects.order_by('published_date')
+
+		

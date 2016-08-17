@@ -1,0 +1,15 @@
+#pagination{
+	margin-top: 20px;
+}
+
+#pagination #previous-page {
+	float: left;
+}
+
+#pagination #next-page {
+	float: right;
+}
+
+#pagination #num-pages {
+	text-align: center;
+}
