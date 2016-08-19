@@ -12,6 +12,9 @@
 	<title>{% block title %} Blog {% endblock %}</title>
 </head>
 <body>
+	<a href="{% url 'blog:post-add' %}">
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Post
+	</a>
 	{% block main %}
 
 	{% endblock %}
