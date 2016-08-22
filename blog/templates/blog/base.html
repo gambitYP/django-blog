@@ -1,22 +1,45 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+	<meta>
+	<title>{% block title %} Blog {% endblock %}</title>
+
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 	
 	<!-- Custom styles -->
-	<link rel="stylesheet" href="{% static "music/style.css" %}">
-	<title>{% block title %} Blog {% endblock %}</title>
+	<link rel="stylesheet" href="{% static "blog/css/style.css" %}">
 </head>
 <body>
-	<a href="{% url 'blog:post-add' %}">
-		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Post
-	</a>
+
+	<div class="navbar navbar-inverse">
+		<div class="container">
+			<a class="navbar-brand" href="#">Kolitansky</a>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="#">Log in</a>
+				</li>
+				<li>
+					<a href="#">Sign in</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
 	{% block main %}
 
 	{% endblock %}
+
+	<footer class="blog-footer">
+    	<p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+    	<p>
+    		<a href="#">Back to top</a>
+    	</p>
+    </footer>
 </body>
 </html>

@@ -3,9 +3,25 @@
 {% block title %} {{ post.title }} {% endblock %}
 
 {% block main %}
-	<h1>{{ post.title }}</h1>
-	<p>{{ post.published_date }}</p>
-	<p>
-		{{ post.text|linebreaksbr }}
-	</p>
+	<div class="container">
+		<div class="blog-header">
+				<h1 class="blog-title">{{ post.title }}</h1>
+	        	<div class="lead blog-description">
+			            <p class="blog-post-meta">{{ post.published_date }} by <a href="#">{{ post.author }}</a></p>
+	        	</div>
+		</div>
+		<div class="row">
+				
+			<div class="col-sm-12 blog-main">
+				<div class="blog-post">
+
+					<p>
+						{{ post.text|linebreaksbr }}
+					</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
 {% endblock %}

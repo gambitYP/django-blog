@@ -1,63 +1,109 @@
 {% extends 'blog/base.html' %}
 
 {% block main %}
-	{% for post in posts %}
-		<h2><a href="{% url "blog:post" post.pk %}">{{ post.title }}</a></h2>
-		<p>published: {{ post.published_date }}</p>
-		<p>
-			{{ post.text|linebreaksbr }}
-		</p>
-	{% endfor %}
+	<div class="container">
+		<div class="row">
+				
+			<div class="col-sm-8 blog-main">
+				{% for post in posts %}
+					<div class="blog-post">
+						<h2 class="blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+						<p class="blog-post-meta">{{ post.published_date }} by <a href="#">{{ post.author }}</a></p>
+						<p>
+							{{ post.text|linebreaksbr }}
+						</p>
+					</div>
+				{% endfor %}
+			</div>
+
+			<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+	          <div class="sidebar-module sidebar-module-inset">
+	            <h4>About</h4>
+	            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+	          </div>
+	          <div class="sidebar-module">
+	            <h4>Archives</h4>
+	            <ol class="list-unstyled">
+	              <li><a href="#">March 2014</a></li>
+	              <li><a href="#">February 2014</a></li>
+	              <li><a href="#">January 2014</a></li>
+	              <li><a href="#">December 2013</a></li>
+	              <li><a href="#">November 2013</a></li>
+	              <li><a href="#">October 2013</a></li>
+	              <li><a href="#">September 2013</a></li>
+	              <li><a href="#">August 2013</a></li>
+	              <li><a href="#">July 2013</a></li>
+	              <li><a href="#">June 2013</a></li>
+	              <li><a href="#">May 2013</a></li>
+	              <li><a href="#">April 2013</a></li>
+	            </ol>
+	          </div>
+	          <div class="sidebar-module">
+	            <h4>Elsewhere</h4>
+	            <ol class="list-unstyled">
+	              <li><a href="#">GitHub</a></li>
+	              <li><a href="#">Twitter</a></li>
+	              <li><a href="#">Facebook</a></li>
+	            </ol>
+	          </div>
+	        </div><!-- /.blog-sidebar -->
+
+		</div>
+	</div>
 
 	
 	<!-- TEMP -->
 	{% if paginator.num_pages > 1 %}
-	<nav aria-label="Page navigation">
-		<ul class="pagination">
-			{% if page_obj.has_previous %}
-			<li>
-		    	<a href="{% url "blog:index" %}?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-		    		<span aria-hidden="true">&laquo;</span>
-		      	</a>
-		    </li>
-		    {% else %}
-			<li class="disabled">
-		    	<a href="#" aria-label="Previous">
-		    		<span aria-hidden="true">&laquo;</span>
-		      	</a>
-		    </li>
-			{% endif %}
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-4 my-pagination">
+			<nav aria-label="Page navigation">
+				<ul class="pagination">
+					{% if page_obj.has_previous %}
+					<li>
+				    	<a href="{% url "blog:index" %}?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+				    		<span aria-hidden="true">&laquo;</span>
+				      	</a>
+				    </li>
+				    {% else %}
+					<li class="disabled">
+				    	<a href="#" aria-label="Previous">
+				    		<span aria-hidden="true">&laquo;</span>
+				      	</a>
+				    </li>
+					{% endif %}
 
-			{% for pn in paginator.page_range %}
-				{% if page_obj.number != pn %}
-				<li>
-					<a href="{% url "blog:index" %}?page={{ pn }}">
-						{{ pn }}
-					</a>
-				</li>
-				{% else %}
-				<li class="active">
-					<a href="#">{{ pn }}</a>
-				</li>
-				{% endif %}
-			{% endfor %}
-			
-			{% if page_obj.has_next %}
-			<li>
-				<a href="{% url "blog:index" %}?page={{ page_obj.next_page_number }}" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-				</a>
-			</li>
-			{% else %}
-			<li class="disabled">
-				<a href="#" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-				</a>
-			</li>
-			{% endif %}
-			
-		</ul>
-	</nav>
+					{% for pn in paginator.page_range %}
+						{% if page_obj.number != pn %}
+						<li>
+							<a href="{% url "blog:index" %}?page={{ pn }}">
+								{{ pn }}
+							</a>
+						</li>
+						{% else %}
+						<li class="active">
+							<a href="#">{{ pn }}</a>
+						</li>
+						{% endif %}
+					{% endfor %}
+					
+					{% if page_obj.has_next %}
+					<li>
+						<a href="{% url "blog:index" %}?page={{ page_obj.next_page_number }}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+					{% else %}
+					<li class="disabled">
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+					{% endif %}
+					
+				</ul>
+			</nav>
+		</div>
+	</div>
 	{% endif %}
 
 {% endblock %}

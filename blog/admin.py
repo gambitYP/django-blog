@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Category
 
-# Register your models here.
-admin.site.register(Post)
+class PostAdmin(admin.ModelAdmin):
+	prepopulated_fields = {'slug': ('title',)}
+
+class CategoryAdmin(admin.ModelAdmin):
+	prepopulated_fields = {'slug': ('title',)}
+
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Post, PostAdmin)
