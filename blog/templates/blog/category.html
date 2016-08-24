@@ -1,8 +1,13 @@
 {% extends 'blog/base.html' %}
 
-{% block title %} category.title {% endblock %}
+{% block title %} {{ category.title }} {% endblock %}
 
 {% block main %}
+	<div class="container-fluid">
+		<div style="background: url({{ category.logo.url }})" class="row category-bg">
+			<h1 class="category-title">{{ category.title }}</h1>
+		</div>
+	</div>
 	<div class="container">
 		<div class="row">
 				

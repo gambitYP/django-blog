@@ -25,6 +25,7 @@ class Post(models.Model):
 class Category(models.Model):
 	title = models.CharField(max_length=100, db_index=True)
 	slug = models.SlugField(max_length=100, db_index=True)
+	logo = models.FileField()
 
 	def __str__(self):
 		return '%s' % self.title

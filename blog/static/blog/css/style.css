@@ -58,7 +58,7 @@ div.my-pagination {
 
 .navbar {
 	border-radius: 0;
-	margin-bottom: 75px;
+	margin-bottom: 0px;
 }
 
 .navbar-brand {
@@ -72,6 +72,7 @@ div.my-pagination {
  */
 
 .blog-header {
+	margin-top: 50px;
   	padding-bottom: 20px;
 }
 .blog-title {
@@ -145,6 +146,25 @@ div.my-pagination {
 }
 
 
+/* 
+ *   CATEGORY
+ */
 
+.category-bg {
+	display: block;
+	height: 150px;
+	margin-bottom: 50px;
+	border-bottom: 2px solid black;
+	-webkit-box-shadow: inset 0px 0px 94px 24px rgba(0,0,0,0.61);
+	-moz-box-shadow: inset 0px 0px 94px 24px rgba(0,0,0,0.61);
+	box-shadow: inset 0px 0px 94px 24px rgba(0,0,0,0.61);
+}
 
-
+.category-title {
+	color: white;
+	display: block;
+	width: 150px;
+	text-align: center;
+	margin: 55.5px auto;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+}
