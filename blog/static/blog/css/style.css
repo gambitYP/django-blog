@@ -119,6 +119,7 @@ div.my-pagination {
 
 .blog-post {
 	margin-bottom: 60px;
+	position: relative;
 }
 .blog-post-title {
 	margin-bottom: 5px;
@@ -127,6 +128,12 @@ div.my-pagination {
 .blog-post-meta {
 	margin-bottom: 20px;
 	color: #999;
+}
+
+.post-edit-buttons {
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 

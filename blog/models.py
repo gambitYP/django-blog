@@ -3,13 +3,13 @@ from django.utils import timezone
 
 # Create your models here.
 class Post(models.Model):
-	author = models.ForeignKey('auth.User')
+	author = models.ForeignKey('auth.User', null=True, blank=True)
 	title = models.CharField(max_length=250, unique=True)
 	slug = models.SlugField(max_length=100, unique=True)
 	text = models.TextField()
 	created_date = models.DateTimeField(default=timezone.now)
 	published_date = models.DateTimeField(blank=True, null=True)
-	category = models.ForeignKey('blog.Category', null=True)
+	category = models.ForeignKey('blog.Category', null=True, blank=True)
 
 	def __str__(self):
 		return '%s' % self.title
